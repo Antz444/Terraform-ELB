@@ -108,7 +108,7 @@ resource "aws_launch_configuration" "example" {
 resource "aws_autoscaling_group" "example" {
   name = "adam-example-asg"
   launch_configuration = aws_launch_configuration.example.id
-  availability_zones   = data.aws_availability_zones.all.names
+  availability_zones   = data.aws_availability_zones.all.names[0]
 
   min_size = 2
   max_size = 10
