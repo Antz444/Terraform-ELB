@@ -86,7 +86,7 @@ resource "aws_launch_configuration" "example" {
   name = "adam-example-launchconfig"
   # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type in ap-south-01
   image_id        = "ami-0620d12a9cf777c87"
-  instance_type   = "t2.micro"
+  instance_type   = "t2.medium"
   security_groups = [aws_security_group.instance.id]
 
   user_data = <<-EOF
@@ -108,7 +108,7 @@ resource "aws_launch_configuration" "example" {
 resource "aws_autoscaling_group" "example" {
   name = "adam-example-asg"
   launch_configuration = aws_launch_configuration.example.id
-  availability_zones   = data.aws_availability_zones.all.names[0]
+  availability_zones   = data.aws_availability_zones.all.names
 
   min_size = 2
   max_size = 10
